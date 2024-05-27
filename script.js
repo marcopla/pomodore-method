@@ -56,7 +56,7 @@ function alterarContexto(contexto) {
 }
 
 const constagemRegressiva = () => {
-  //iniciar()
+  zerar();
   tempoDecorridoEmSegundos -= 1;
   console.log('Temporaizador: ' + tempoDecorridoEmSegundos);
 };
@@ -64,6 +64,10 @@ const constagemRegressiva = () => {
 startPauseBt.addEventListener('click', () => iniciar);
 
 function iniciar() {
+  if (intervaloId) {
+    zerar();
+    return;
+  }
   intervaloId = setInterval(constagemRegressiva, 1000);
 }
 
