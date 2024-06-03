@@ -2,6 +2,7 @@ const btAdicionarTarefa = document.querySelector('.app__button--add-task');
 const formAdicionarTarefa = document.querySelector('.app__form-add-task');
 const formTextArea = document.querySelector('.app__form-textarea');
 const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+const ulTarefas = document.querySelector('.app__section-task-list');
 
 function criarElementoHTML(tarefa) {
   const li = document.createElement('li');
@@ -29,6 +30,8 @@ function criarElementoHTML(tarefa) {
   li.append(svg);
   li.append(paragrafo);
   li.append(botao);
+
+  return li;
 }
 
 btAdicionarTarefa.addEventListener('click', () => {
@@ -42,4 +45,8 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
   };
   tarefas.push(tarefa);
   localStorage.setItem('tarefas', JSON.stringify(tarefas));
+});
+
+tarefas.forEach((tarefa) => {
+  const elementoTarefa = criarElementoHTML(tarefa);
 });
