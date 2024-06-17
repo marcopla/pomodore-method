@@ -6,6 +6,7 @@ const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 const paragrafoDescricaoTarefa = document.querySelector(
   '.app__section-active-task-description',
 );
+let tarefaSelecionada = null;
 
 function atualizarTarefas() {
   localStorage.setItem('tarefas', JSON.stringify(tarefas));
@@ -48,6 +49,7 @@ function criarElementoHTML(tarefa) {
   li.append(botao);
 
   li.onclick = () => {
+    tarefaSelecionada = tarefa;
     paragrafoDescricaoTarefa.textContent = tarefa.descricao;
     document
       .querySelectorAll('.app__section-task-list-item-active')
