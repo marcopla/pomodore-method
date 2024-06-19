@@ -49,6 +49,11 @@ function criarElementoHTML(tarefa) {
   li.append(botao);
 
   li.onclick = () => {
+    if (tarefaSelecionada == tarefa) {
+      paragrafoDescricaoTarefa.textContent = '';
+      tarefaSelecionada = null;
+      return;
+    }
     tarefaSelecionada = tarefa;
     paragrafoDescricaoTarefa.textContent = tarefa.descricao;
     document
