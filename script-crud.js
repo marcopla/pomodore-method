@@ -49,6 +49,11 @@ function criarElementoHTML(tarefa) {
   li.append(botao);
 
   li.onclick = () => {
+    document
+      .querySelectorAll('.app__section-task-list-item-active')
+      .forEach((elemento) => {
+        elemento.classList.remove('app__section-task-list-item-active');
+      });
     if (tarefaSelecionada == tarefa) {
       paragrafoDescricaoTarefa.textContent = '';
       tarefaSelecionada = null;
@@ -56,11 +61,6 @@ function criarElementoHTML(tarefa) {
     }
     tarefaSelecionada = tarefa;
     paragrafoDescricaoTarefa.textContent = tarefa.descricao;
-    document
-      .querySelectorAll('.app__section-task-list-item-active')
-      .forEach((elemento) => {
-        elemento.classList.remove('app__section-task-list-item-active');
-      });
     li.classList.add('app__section-task-list-item-active');
   };
 
